@@ -1,8 +1,10 @@
 import { connect } from 'dva';
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import yay from '@/assets/yay.jpg';
 
-interface IIndexProps {}
+interface IIndexProps {
+  global;
+}
 @connect(global => global)
 export default class Index extends Component<IIndexProps> {
   static defaultProps: IIndexProps = {};
@@ -12,6 +14,7 @@ export default class Index extends Component<IIndexProps> {
       <div style={{ textAlign: 'center' }}>
         <h1>Yay! Welcome to umi-electron-typescript!</h1>
         {this.props.global.name}
+        <img src={yay} alt="ya" />
       </div>
     );
   }

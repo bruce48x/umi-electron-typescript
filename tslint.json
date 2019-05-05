@@ -11,7 +11,7 @@
     "no-conditional-assignment": true,
     "no-consecutive-blank-lines": false,
     "ordered-imports": false,
-    "quotemark": [true, "single"]
+    "quotemark": false
   },
 
   "jsRules": {

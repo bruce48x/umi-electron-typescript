@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "an example based on umijs + electron + typescript",
   "main": "./dist/main/main.js",
-  "author": "arvinx",
+  "author": "arvinxx",
   "private": true,
   "build": {
     "files": [
@@ -22,19 +22,20 @@
   },
   "scripts": {
     "start": "npm run build-main-dev && electron ./dist/main/main.js",
-    "start:main": "electron-webpack dev",
-    "start:renderer": "APP_ROOT=src/renderer umi dev",
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:main\"",
+    "pack": "npm run build:renderer && npm run build-main-prod && electron-builder --dir",
+    "dev:main": "electron-webpack dev",
+    "dev:renderer": "APP_ROOT=src/renderer umi dev",
     "build-main-prod": "NODE_ENV=production webpack --config ./build/webpack.main.prod.config.js",
     "build-main-dev": "NODE_ENV=development webpack --config ./build/webpack.main.config.js",
     "build:renderer": "APP_ROOT=src/renderer umi build",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "debug:main": "electron --inspect=5858 -w ./dist/main/main.js",
-    "pack": "npm run build:renderer && npm run build-main-prod && electron-builder --dir",
     "dist": "electron-builder",
     "prettier": "prettier --list-different \"./**/*.{ts,tsx,js,jsx,less}\""
   },
-  "repository": "https://github.com/arvinx/umi-electron-typescript",
+  "repository": "https://github.com/arvinxx/umi-electron-typescript",
   "keywords": [
     "Electron",
     "umi",
@@ -46,6 +47,7 @@
   ],
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
+    "concurrently": "^3.5.1",
     "electron": "^4.0.5",
     "electron-builder": "^20.38.5",
     "electron-debug": "^2.1.0",
@@ -62,10 +64,7 @@
     "webpack-cli": "^3.2.1",
     "webpack-merge": "^4.2.1"
   },
-  "dependencies": {
-    "http-proxy": "^1.17.0",
-    "translation.js": "^0.7.5"
-  },
+  "dependencies": {},
   "electronWebpack": {
     "main": {
       "sourceDirectory": "src/main"
